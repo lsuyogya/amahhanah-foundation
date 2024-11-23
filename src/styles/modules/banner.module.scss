@@ -21,6 +21,9 @@
     background-image: var(--mobileImgSrc);
     background-size: cover;
   }
+  @media (max-width: 600px) {
+    min-height: 30vh;
+  }
   //   background-repeat: no-repeat;
   img {
     width: 100%;
@@ -75,6 +78,10 @@
     @media (max-width: 1000px) {
       inset-inline: 12%;
       inset-block-start: 40%;
+    }
+    @media (max-width: 600px) {
+      inset-inline: 12%;
+      inset-block-start: 60%;
     }
   }
 }
