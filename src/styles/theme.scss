@@ -4,6 +4,8 @@
   font-family: Roboto;
   --colorDark: #1d2130;
   --colorDarker: #0b0706;
+  --colorPrimary: #32b4ec;
+  color: var(--colorDark);
 }
 
 * {
@@ -90,11 +92,26 @@ a:any-link {
 
 .btn {
   padding: 0.75rem 1.5rem;
+  cursor: pointer;
 }
 .btnDark {
   @extend .btn;
   background-color: var(--colorDark);
   border-radius: 0.25rem;
+  color: white;
+  &:is(a:any-link) {
+    color: white;
+    text-decoration: none;
+    &:not(:hover) {
+      color: white;
+    }
+  }
+}
+.btnPrimary {
+  @extend .btn;
+  background-color: var(--colorPrimary);
+  border-radius: 0.25rem;
+  border-color: transparent;
   color: white;
   &:is(a:any-link) {
     color: white;
@@ -300,5 +317,80 @@ footer {
     border-bottom-right-radius: var(--_borderRad);
     padding: 0.5rem 1rem;
     font-weight: 500;
+  }
+}
+
+.txtWrapper:has(> small.dashTitle) {
+  --_padding-inline-start: 4rem;
+  > * {
+    margin-block: 2.25rem;
+    @media (min-width: 1000px) {
+      padding-inline-start: var(--_padding-inline-start);
+    }
+  }
+
+  .dashTitle {
+    padding-inline-start: var(--_padding-inline-start);
+    position: relative;
+    color: var(--colorDark);
+    font-weight: 600;
+    text-transform: uppercase;
+    &::before {
+      content: "";
+      height: 2px;
+      position: absolute;
+      left: 0;
+      width: calc(var(--_padding-inline-start) - 1rem);
+      inset-block: 0;
+      margin-block: auto;
+      background-color: #0b0706;
+    }
+  }
+
+  .sectionTitle {
+    font-size: clamp(calc(32rem / 16), 8vw, calc(48rem / 16));
+    color: var(--colorDark);
+    line-height: 1.2;
+  }
+
+  .sectionTitle ~ p {
+    color: #525560;
+    margin-block: 1.5rem;
+  }
+}
+.imgWrapperAbsolute {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  video,
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    @media (min-width: 1000px) {
+      position: absolute;
+    }
+  }
+}
+
+.col-60-40 {
+  display: grid;
+  column-gap: 3rem;
+  row-gap: 2rem;
+  @media (min-width: 1000px) {
+    grid-template-columns: 6fr 4fr;
+  }
+}
+
+.lineAfter {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-content: center;
+  .line {
+    flex-grow: 1;
+    background-color: #e5e5e5;
+    height: 2px;
+    margin-block: auto;
   }
 }

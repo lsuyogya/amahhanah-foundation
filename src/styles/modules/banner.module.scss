@@ -60,7 +60,7 @@
   gap: 1rem;
   > div:empty {
     flex-grow: 1;
-    height: 1px;
+    height: 2px;
     background-color: #0b0706;
   }
 }

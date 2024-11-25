@@ -1,0 +1,17 @@
+.logoWrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  .logoImg {
+    max-width: 100px;
+    height: auto;
+    align-self: center;
+  }
+  &:not(:hover) {
+    .logoImg {
+      filter: brightness(0) saturate(100%) invert(50%) sepia(16%) saturate(200%)
+        hue-rotate(187deg) brightness(92%) contrast(84%);
+    }
+  }
+}
