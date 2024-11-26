@@ -1,0 +1,31 @@
+.cardContentWithin {
+  --_borderRad: 12px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--_borderRad);
+  img {
+    position: absolute;
+    object-fit: cover;
+    filter: brightness(0.6);
+    z-index: -1;
+    border-radius: var(--_borderRad);
+  }
+  .txtWrapper {
+    color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    h2 {
+      font-size: clamp(calc(24rem / 16), 2vw, calc(28rem / 16));
+      line-height: 1.5;
+    }
+    p {
+      line-height: 1.8;
+    }
+    a:has(button) {
+      margin-block-start: auto;
+    }
+  }
+}

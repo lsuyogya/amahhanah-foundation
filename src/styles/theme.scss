@@ -5,7 +5,11 @@
   --colorDark: #1d2130;
   --colorDarker: #0b0706;
   --colorPrimary: #32b4ec;
+  --sectionGap: 8rem;
   color: var(--colorDark);
+  @media (max-width: 1000px) {
+    --sectionGap: 4rem;
+  }
 }
 
 * {
@@ -60,7 +64,7 @@ body {
   }
 }
 main > section {
-  margin-block: 4rem;
+  margin-block: var(--sectionGap);
 }
 main > section:first-of-type {
   margin-block-start: 0;
@@ -104,6 +108,20 @@ a:any-link {
     text-decoration: none;
     &:not(:hover) {
       color: white;
+    }
+  }
+}
+.btnLight {
+  @extend .btn;
+  background-color: white;
+  border-radius: 0.25rem;
+  color: var(--colorDark);
+  border: none;
+  &:is(a:any-link) {
+    color: var(--colorDark);
+    text-decoration: none;
+    &:not(:hover) {
+      color: var(--colorDark);
     }
   }
 }
@@ -392,5 +410,20 @@ footer {
     background-color: #e5e5e5;
     height: 2px;
     margin-block: auto;
+  }
+}
+
+.halfWidthDesktop {
+  @media (min-width: 1000px) {
+    max-width: 50%;
+  }
+}
+
+.card-400-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(350rem / 16), 1fr));
+  gap: 2rem;
+  @media (max-width: calc(350rem / 16)) {
+    grid-template-columns: 1fr;
   }
 }

@@ -14,6 +14,10 @@ import logoUrl1 from "../assets/images/RandomLogo1.png";
 import logoUrl2 from "../assets/images/RandomLogo2.png";
 import logoUrl3 from "../assets/images/RandomLogo3.png";
 import logoUrl4 from "../assets/images/RandomLogo4.png";
+import card from "../assets/images/card.png";
+import card2 from "../assets/images/card2.png";
+import card3 from "../assets/images/card3.png";
+import CardContentWithin from "../components/CardContentWithin";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -21,6 +25,26 @@ export const Route = createLazyFileRoute("/")({
 
 function Index() {
   const logoUrlArray = [logoUrl1, logoUrl2, logoUrl3, logoUrl4];
+  const cardWithinArray = [
+    {
+      imgUrl: card,
+      title: "Lorem ipsum dolor sit amet.",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+      btnUrl: "/",
+    },
+    {
+      imgUrl: card2,
+      title: "Lorem ipsum dolor sit amet.",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+      btnUrl: "/",
+    },
+    {
+      imgUrl: card3,
+      title: "Lorem ipsum dolor sit amet.",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+      btnUrl: "/",
+    },
+  ];
   return (
     <>
       <section className={`mainGrid ${bannerStyles.banner}`}>
@@ -108,6 +132,29 @@ function Index() {
               </SplideSlide>
             ))}
           </Splide>
+        </div>
+      </section>
+
+      <section className="mainGrid">
+        <div className="content">
+          <div className="txtWrapper">
+            <small className="dashTitle">Projects we have done</small>
+            <h1 className="sectionTitle halfWidthDesktop">
+              We are Creating sustainable society, for everyone.
+            </h1>
+          </div>
+          <div className="imgWrapperAbsolute">
+            <div className="card-400-grid">
+              {cardWithinArray.map((cardWithin) => (
+                <CardContentWithin
+                  imgUrl={cardWithin.imgUrl}
+                  title={cardWithin.title}
+                  btnUrl={cardWithin.btnUrl}
+                  desc={cardWithin.desc}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>
