@@ -83,7 +83,7 @@ const PieChart: React.FC<PieChartProps> = ({
 
       {/* Group for segments with clip path applied */}
       <g clipPath="url(#donut-hole)">
-        {data.map((value, index) => {
+        {data.map((_, index) => {
           const startAngle = index === 0 ? -90 : cumulativeAngles[index - 1];
           const endAngle = cumulativeAngles[index];
           const progress = useMotionValue(0);
