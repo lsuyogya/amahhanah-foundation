@@ -1,0 +1,43 @@
+ul.listWithIcons {
+  list-style: none;
+  li {
+    // Assumes --iconUrl is set on html to the bullet image url. Ex: --iconUrl: url("sth")
+    margin-inline-start: 2.5rem;
+    position: relative;
+    &::before {
+      content: "";
+      background-image: var(--iconUrl);
+      background-size: contain;
+      height: 2rem;
+      width: 2rem;
+      left: -2.5rem;
+      display: block;
+      position: absolute;
+      background-repeat: no-repeat;
+    }
+    &:not(:first-child, :last-child) {
+      margin-block: 0.75rem;
+    }
+  }
+}
+
+@mixin ScalingFont($_maxFontSize, $_minFontSize, $_targetScreenSize: 1400) {
+  $scalingFactor: calc($_maxFontSize / $_targetScreenSize) * 100vw;
+  font-size: clamp(
+    calc($_minFontSize / 16 * 1rem),
+    calc($scalingFactor + 2vw),
+    calc($_maxFontSize / 16 * 1rem)
+  );
+}
+.whatWeDo {
+  .title {
+    @include ScalingFont(24, 18, 1440);
+    font-weight: 600;
+  }
+  p {
+    line-height: 1.6;
+  }
+  li p {
+    max-width: 50ch;
+  }
+}

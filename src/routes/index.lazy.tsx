@@ -8,8 +8,9 @@ import splideStyles from "../styles/modules/splide.module.scss";
 import vidUrl from "../assets/videos/randomVid.mp4";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-//@ts-ignore
+// @ts-ignore
 import "@splidejs/react-splide/css";
+import "../styles/pages/homepage.scss";
 import logoUrl1 from "../assets/images/RandomLogo1.png";
 import logoUrl2 from "../assets/images/RandomLogo2.png";
 import logoUrl3 from "../assets/images/RandomLogo3.png";
@@ -18,6 +19,12 @@ import card from "../assets/images/card.png";
 import card2 from "../assets/images/card2.png";
 import card3 from "../assets/images/card3.png";
 import CardContentWithin from "../components/CardContentWithin";
+import whatWeDoUrl from "../assets/images/whatWeDo.png";
+import whatWeDoIconURL from "../assets/images/whatWeDo.svg";
+import whatWeDoIconURL1 from "../assets/images/whatWeDo1.svg";
+import whatWeDoIconURL2 from "../assets/images/whatWeDo2.svg";
+import whatWeDoIconURL3 from "../assets/images/whatWeDo3.svg";
+import PieChart from "../components/PieChart";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -43,6 +50,32 @@ function Index() {
       title: "Lorem ipsum dolor sit amet.",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
       btnUrl: "/",
+    },
+  ];
+  const whatWeDoList = [
+    {
+      iconPath: whatWeDoIconURL,
+      title: "Build Healthy Cities",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    },
+    {
+      iconPath: whatWeDoIconURL1,
+      title: "Tree Plantation",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    },
+    {
+      iconPath: whatWeDoIconURL2,
+      title: "Protect Land and Water",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    },
+    {
+      iconPath: whatWeDoIconURL3,
+      title: "Animal Safety",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
     },
   ];
   return (
@@ -134,6 +167,41 @@ function Index() {
           </Splide>
         </div>
       </section>
+      <section className="mainGrid whatWeDo">
+        <div className="content col-60-40">
+          <div className="txtWrapper">
+            <small className="dashTitle">What We Do</small>
+            <h1 className="sectionTitle">
+              We are for this, we care for that and we care.
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse varius enim in eros elementum tristique.
+            </p>
+            <ul className="listWithIcons">
+              {whatWeDoList.map((whatWeDo, index) => (
+                <li
+                  key={whatWeDo.title + index}
+                  style={
+                    {
+                      "--iconUrl": `url('${whatWeDo.iconPath}')`,
+                    } as CSSProperties
+                  }
+                >
+                  <div className="title">{whatWeDo.title}</div>
+                  <p>{whatWeDo.content}</p>
+                </li>
+              ))}
+            </ul>
+            <div>
+              <button className="btnPrimary">Learn More</button>
+            </div>
+          </div>
+          <div className="imgWrapperAbsolute">
+            <img src={whatWeDoUrl}></img>
+          </div>
+        </div>
+      </section>
 
       <section className="mainGrid">
         <div className="content">
@@ -145,8 +213,9 @@ function Index() {
           </div>
           <div className="imgWrapperAbsolute">
             <div className="card-400-grid">
-              {cardWithinArray.map((cardWithin) => (
+              {cardWithinArray.map((cardWithin, index) => (
                 <CardContentWithin
+                  key={cardWithin.title + index}
                   imgUrl={cardWithin.imgUrl}
                   title={cardWithin.title}
                   btnUrl={cardWithin.btnUrl}
@@ -155,6 +224,24 @@ function Index() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mainGrid">
+        <div className="content">
+          <PieChart
+            data={[40, 35, 10, 10, 5]}
+            colors={["#bef3c0", "#ac94f1", "#fff0ca", "#f9cf64", "#f38fbf"]}
+            delayStep={0.29}
+            duration={0.3}
+          ></PieChart>
+
+          <PieChart
+            data={[30, 20, 15, 35]}
+            colors={["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4"]}
+            duration={0.29}
+            delayStep={0.3}
+          />
         </div>
       </section>
     </>
