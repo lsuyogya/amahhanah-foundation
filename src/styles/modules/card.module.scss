@@ -2,8 +2,10 @@
   --_borderRad: 12px;
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
   border-radius: var(--_borderRad);
+  @media (min-width: calc(360rem / 16)) {
+    aspect-ratio: 1;
+  }
   img {
     position: absolute;
     object-fit: cover;
@@ -13,10 +15,11 @@
   }
   .txtWrapper {
     color: white;
-    padding: 3rem;
+    padding-block: 3rem;
+    padding-inline: clamp(2rem, 2vw, 3rem);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     h2 {
       font-size: clamp(calc(24rem / 16), 2vw, calc(28rem / 16));
       line-height: 1.5;

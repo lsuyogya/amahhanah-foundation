@@ -1,0 +1,8 @@
+@mixin ScalingFont($_maxFontSize, $_minFontSize, $_targetScreenSize: 1400) {
+  $scalingFactor: calc($_maxFontSize / $_targetScreenSize) * 100vw;
+  font-size: clamp(
+    calc($_minFontSize / 16 * 1rem),
+    calc($scalingFactor + 2vw),
+    calc($_maxFontSize / 16 * 1rem)
+  );
+}

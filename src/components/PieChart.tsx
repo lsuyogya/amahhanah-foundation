@@ -1,29 +1,31 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react';
 import {
   motion,
   useInView,
   animate,
   useMotionValue,
   useTransform,
-} from "framer-motion";
+} from 'framer-motion';
 
-interface PieChartProps {
-  data: number[];
-  colors: string[];
+interface PieChartProps extends React.SVGProps<SVGSVGElement> {
+  chartData: { data: number; color: string; label: string }[];
   duration?: number;
   delayStep?: number;
+  svgClassName?: string;
 }
 
 const PieChart: React.FC<PieChartProps> = ({
-  data,
-  colors,
+  chartData,
   duration = 1,
   delayStep = 0.5,
+  svgClassName = '',
 }) => {
+  const data = chartData.map((item) => item.data);
+  const colors = chartData.map((item) => item.color);
   const chartRef = useRef<SVGSVGElement>(null);
   const isInView = useInView(chartRef, {
     once: true,
-    margin: "0px 0px -20% 0px",
+    margin: '0px 0px -30% 0px',
   });
 
   const total = data.reduce((sum, value) => sum + value, 0);
@@ -59,7 +61,7 @@ const PieChart: React.FC<PieChartProps> = ({
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
       transition={{ duration: 0.5 }}
-    >
+      className={svgClassName}>
       {/* Define clip path for the donut hole */}
       <defs>
         <clipPath id="donut-hole">
@@ -72,9 +74,9 @@ const PieChart: React.FC<PieChartProps> = ({
             V 0
             Z
             M 100,100
-            m -54,0
-            a 54,54 0 1,0 108,0
-            a 54,54 0 1,0 -108,0
+            m -40,0
+            a 40,40 0 1,0 80,0
+            a 40,40 0 1,0 -80,0
             Z
           "
           />
@@ -98,7 +100,7 @@ const PieChart: React.FC<PieChartProps> = ({
             animate(progress, 1, {
               duration,
               delay: index * delayStep,
-              ease: "easeOut",
+              ease: 'linear',
             });
           }
 

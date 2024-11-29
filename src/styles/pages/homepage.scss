@@ -1,3 +1,5 @@
+@use '../constants' as constants;
+@use '../mixins' as mixins;
 ul.listWithIcons {
   list-style: none;
   li {
@@ -5,7 +7,7 @@ ul.listWithIcons {
     margin-inline-start: 2.5rem;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       background-image: var(--iconUrl);
       background-size: contain;
       height: 2rem;
@@ -21,17 +23,9 @@ ul.listWithIcons {
   }
 }
 
-@mixin ScalingFont($_maxFontSize, $_minFontSize, $_targetScreenSize: 1400) {
-  $scalingFactor: calc($_maxFontSize / $_targetScreenSize) * 100vw;
-  font-size: clamp(
-    calc($_minFontSize / 16 * 1rem),
-    calc($scalingFactor + 2vw),
-    calc($_maxFontSize / 16 * 1rem)
-  );
-}
 .whatWeDo {
   .title {
-    @include ScalingFont(24, 18, 1440);
+    @include mixins.ScalingFont(24, 18, 1440);
     font-weight: 600;
   }
   p {
@@ -39,5 +33,116 @@ ul.listWithIcons {
   }
   li p {
     max-width: 50ch;
+  }
+  // ul {
+  //   border-inline-start: 1px solid #e5e5e5 ;
+  // }
+}
+
+section.donationChart {
+  .donationGrid {
+    display: grid;
+    padding-inline: clamp(2rem, 5vw, 4rem);
+    gap: 4rem;
+    @media (min-width: calc(1000rem / 16)) {
+      grid-template-columns: 2fr 1fr;
+    }
+    ul.chartLegend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      list-style: none;
+      li {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+    .txtWrapper {
+      display: grid;
+      place-content: center;
+      gap: 2rem;
+    }
+    .colorBox {
+      background-color: var(--bgCol);
+      height: 1rem;
+      width: 1rem;
+      display: block;
+      border-radius: 0.25rem;
+    }
+    .donationSvg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.imgBanner {
+  --_border-radius: calc(12rem / 16);
+  position: relative;
+  min-height: 40vh;
+  display: grid;
+  place-content: center;
+  border-radius: var(--_border-radius);
+  img {
+    border-radius: var(--_border-radius);
+    position: absolute;
+    display: block;
+    object-fit: cover;
+    filter: brightness(0.5);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  .txtWrapper {
+    padding-inline: 2rem;
+    text-align: center;
+    > * {
+      margin-block: 2rem;
+    }
+    h1 {
+      max-width: 30ch;
+    }
+    .btnGrp {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+  }
+}
+
+.readNews {
+  h1 {
+    @include mixins.ScalingFont(40, 24, 1440);
+  }
+  .newsCardGrid {
+    --_borderRad: calc(12rem / 16);
+    margin-block-start: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(calc(300rem / 16), 1fr));
+    @media (max-width: calc((300rem / 16) + constants.$paddingInline)) {
+      grid-template-columns: 1fr;
+    }
+    .imgWrapper {
+      width: 100%;
+      img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+      }
+    }
+    .txtWrapper {
+      h2 {
+        @include mixins.ScalingFont(20, 18, 1440);
+      }
+      .content {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
   }
 }

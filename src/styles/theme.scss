@@ -1,10 +1,14 @@
+@use './constants' as constants;
 @import url(_fonts.scss);
 
 :root {
   font-family: Roboto;
+  --colorLight: #fff;
+  --colorLightGrey: #8c9597;
   --colorDark: #1d2130;
   --colorDarker: #0b0706;
   --colorPrimary: #32b4ec;
+  --colorSectionDark: #1f3136;
   --sectionGap: 8rem;
   color: var(--colorDark);
   @media (max-width: 1000px) {
@@ -18,7 +22,7 @@
   margin: 0;
 }
 .mainGrid {
-  --padding-inline: 2rem;
+  --padding-inline: #{constants.$paddingInline};
   --content-max-width: calc(1400rem / 16);
   --breakout-max-width: calc(1500rem / 16);
   --breakout-min-width: 0rem;
@@ -82,7 +86,7 @@ a:any-link {
     text-decoration: none;
     color: #525560;
   }
-  &[data-status="active"] {
+  &[data-status='active'] {
     font-weight: 600;
     color: var(--colorDarker);
   }
@@ -103,6 +107,7 @@ a:any-link {
   background-color: var(--colorDark);
   border-radius: 0.25rem;
   color: white;
+  border: none;
   &:is(a:any-link) {
     color: white;
     text-decoration: none;
@@ -129,7 +134,7 @@ a:any-link {
   @extend .btn;
   background-color: var(--colorPrimary);
   border-radius: 0.25rem;
-  border-color: transparent;
+  border: none;
   color: white;
   &:is(a:any-link) {
     color: white;
@@ -174,7 +179,7 @@ a:any-link {
       z-index: 200;
       transform: translateX(200%);
       transition: transform 300ms;
-      &[data-open="true"] {
+      &[data-open='true'] {
         transform: translateX(0%);
       }
       nav {
@@ -200,7 +205,7 @@ a:any-link {
   transition: background-color 300ms;
   &::after,
   &::before {
-    content: "";
+    content: '';
     background-color: var(--colorDarker);
     position: absolute;
     height: 2px;
@@ -214,7 +219,7 @@ a:any-link {
   &::before {
     bottom: -0.5rem;
   }
-  &[data-open="true"] {
+  &[data-open='true'] {
     background-color: transparent;
     &::after {
       transform: rotate(-45deg) translate(-0.35rem, 0.35rem);
@@ -227,7 +232,7 @@ a:any-link {
 
 footer {
   font-size: calc(14rem / 16);
-  background-color: #0b0706;
+  background-color: var(--colorSectionDark);
   color: white;
   padding-block: 2rem;
   &.TanStackRouterDevtools {
@@ -271,7 +276,7 @@ footer {
     &:not(:hover) {
       color: #c9c9c8;
     }
-    &[data-status="active"] {
+    &[data-status='active'] {
       color: #fff;
       font-weight: 400;
     }
@@ -354,7 +359,7 @@ footer {
     font-weight: 600;
     text-transform: uppercase;
     &::before {
-      content: "";
+      content: '';
       height: 2px;
       position: absolute;
       left: 0;
@@ -366,9 +371,7 @@ footer {
   }
 
   .sectionTitle {
-    font-size: clamp(calc(32rem / 16), 8vw, calc(48rem / 16));
     color: var(--colorDark);
-    line-height: 1.2;
   }
 
   .sectionTitle ~ p {
@@ -423,7 +426,23 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(calc(350rem / 16), 1fr));
   gap: 2rem;
-  @media (max-width: calc(350rem / 16)) {
+  @media (max-width: calc((350rem / 16) + constants.$paddingInline)) {
     grid-template-columns: 1fr;
   }
+}
+
+.bgDark {
+  background-color: var(--colorSectionDark);
+  padding-block: calc(var(--sectionGap) / 2);
+}
+
+.sectionTitle {
+  font-size: clamp(calc(32rem / 16), 3.5vw, calc(48rem / 16));
+  line-height: 1.2;
+}
+.txtLight {
+  color: var(--colorLight);
+}
+.txtLightGrey {
+  color: var(--colorLightGrey);
 }
