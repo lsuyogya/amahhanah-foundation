@@ -1,0 +1,16 @@
+diff --git a/node_modules/@splidejs/react-splide/package.json b/node_modules/@splidejs/react-splide/package.json
+index d79c018..79a7bc4 100644
+--- a/node_modules/@splidejs/react-splide/package.json
++++ b/node_modules/@splidejs/react-splide/package.json
+@@ -53,9 +53,11 @@
+     "test": "jest",
+     "eslint": "eslint src",
+     "deploy": "gh-pages -d examples/dist"
++
+   },
+   "exports": {
+     ".": {
++      "types": "./dist/types/index.d.ts",
+       "require": "./dist/js/react-splide.cjs.js",
+       "import": "./dist/js/react-splide.esm.js",
+       "default": "./dist/js/react-splide.esm.js"

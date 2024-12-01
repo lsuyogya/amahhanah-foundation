@@ -68,11 +68,11 @@ export const footerLinks: FooterLinkGroup[] = [
         label: "About us",
       }),
       linkOptions({
-        to: "/team",
+        to: "/",
         label: "Team",
       }),
       linkOptions({
-        to: "/what-we-do",
+        to: "/",
         label: "What We Do",
       }),
       linkOptions({
@@ -85,11 +85,11 @@ export const footerLinks: FooterLinkGroup[] = [
     label: "More",
     subLinks: [
       linkOptions({
-        to: "/projects",
+        to: "/",
         label: "Projects",
       }),
       linkOptions({
-        to: "/events",
+        to: "/",
         label: "Events",
       }),
       linkOptions({
