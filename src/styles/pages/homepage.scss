@@ -230,6 +230,9 @@ section.donationChart {
     stroke: #5a5a5a;
     fill: #5a5a5a;
     // &:has(path:hover) {
+    path {
+      transition: fill 300ms;
+    }
     &:hover {
       path[id="NP"] {
         fill: #39d3dd;

@@ -32,6 +32,7 @@ import newsImgUrl3 from "../assets/images/news3.png";
 import newsImgUrl4 from "../assets/images/news4.png";
 import Arrow from "../assets/images/Arrow.svg?react";
 import WorldMap from "../assets/images/world.svg?react";
+import Heart from "../assets/images/heart.svg?react";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -400,7 +401,9 @@ function Index() {
           </div>
         </div>
       </section>
-      <button className="stickyDonateBtn">Donate</button>
+      <button className="stickyDonateBtn">
+        <span>Donate</span> <Heart></Heart>
+      </button>
     </>
   );
 }

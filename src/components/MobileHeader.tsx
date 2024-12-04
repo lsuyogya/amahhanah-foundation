@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { HeaderLinkOptions } from "../routes";
-import { useState } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
+import { useAnimation, motion } from "motion/react";
 
 const MobileHeader = ({ links }: { links: HeaderLinkOptions[] }) => {
   // Separate the logo link from the rest
@@ -9,9 +10,48 @@ const MobileHeader = ({ links }: { links: HeaderLinkOptions[] }) => {
     (link) => link.label.toLowerCase() !== "logo"
   );
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const controls = useAnimation();
+  const [prevScrollY, setPrevScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    setVisible(currentScrollY < prevScrollY || currentScrollY === 0);
+    setPrevScrollY(currentScrollY);
+  };
+
+  useLayoutEffect(() => {
+    const updateHeaderHeight = () => {
+      const height = document.querySelector("header")?.offsetHeight || 0;
+      setHeaderHeight(height);
+      document.body.style.setProperty("--headerHeight", `${height}px`);
+    };
+
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
+
+    return () => window.removeEventListener("resize", updateHeaderHeight);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollY]);
+
+  useEffect(() => {
+    controls.start({
+      y: visible ? 0 : -headerHeight - 32,
+      transition: { type: "spring", stiffness: 300, damping: 30 },
+    });
+  }, [visible, controls, headerHeight]);
 
   return (
-    <header className="mainGrid header mobileHeader">
+    <motion.header
+      className="mainGrid header mobileHeader"
+      animate={controls}
+      initial={{ y: 0 }}
+    >
       <div className="content">
         {logoLink && (
           <Link
@@ -44,7 +84,7 @@ const MobileHeader = ({ links }: { links: HeaderLinkOptions[] }) => {
           </nav>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
