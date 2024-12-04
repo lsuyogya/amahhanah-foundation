@@ -39,8 +39,8 @@
   }
   h1 {
     font-size: clamp(calc(32rem / 16), 10vw, calc(64rem / 16));
-    line-height: 1;
-    max-width: 15ch;
+    line-height: 1.2;
+    max-width: 10ch;
     margin-block: 2rem;
     margin-block-start: 4rem;
   }

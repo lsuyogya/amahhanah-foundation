@@ -1,5 +1,5 @@
 import { AnyRouter, LinkOptions, linkOptions } from "@tanstack/react-router";
-import Logo from "./assets/Ammanah-Foundation-Logo.svg?react";
+import Logo from "./assets/Ammanah-Foundation-Logo_new.svg?react";
 
 export const headerLinks = [
   linkOptions({

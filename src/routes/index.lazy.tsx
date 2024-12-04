@@ -8,7 +8,7 @@ import splideStyles from "../styles/modules/splide.module.scss";
 import vidUrl from "../assets/videos/randomVid.mp4";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-// @ts-ignore
+// @ts-expect-error
 import "@splidejs/react-splide/css";
 import "../styles/pages/homepage.scss";
 import logoUrl1 from "../assets/images/RandomLogo1.png";
@@ -30,6 +30,8 @@ import newsImgUrl from "../assets/images/news.png";
 import newsImgUrl2 from "../assets/images/news2.png";
 import newsImgUrl3 from "../assets/images/news3.png";
 import newsImgUrl4 from "../assets/images/news4.png";
+import Arrow from "../assets/images/Arrow.svg?react";
+import WorldMap from "../assets/images/world.svg?react";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -120,6 +122,18 @@ function Index() {
       imgUrl: newsImgUrl4,
     },
   ];
+  const events = [
+    {
+      date: { day: 23, mth: "sep", dateTime: "2024-09-23" },
+      tag: "Next Events",
+      title: "Say no to plastic usage and save the planet",
+    },
+    {
+      date: { day: 25, mth: "sep", dateTime: "2024-09-23" },
+      tag: "Next Events",
+      title: "Weekly cleaning program",
+    },
+  ];
   return (
     <>
       <section className={`mainGrid ${bannerStyles.banner}`}>
@@ -127,7 +141,7 @@ function Index() {
         <div className={`content`}>
           <div className={bannerStyles.halfGrid}>
             <div className={bannerStyles.txtWrapper}>
-              <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit!</h1>
+              <h1>Where Trust Meets Action </h1>
               <button className="btnTransparent">What we Do</button>
             </div>
             <div
@@ -147,6 +161,14 @@ function Index() {
             <div> 23,800 Data</div>
             <div></div>
             <div> 5840 donations </div>
+          </div>
+        </div>
+      </section>
+      <section className="mainGrid">
+        <div className="content">
+          <div className="mapContainer">
+            <h1> Our Reach</h1>
+            <WorldMap />
           </div>
         </div>
       </section>
@@ -353,7 +375,32 @@ function Index() {
         </div>
       </section>
 
-      {/* <section className=''></section> */}
+      <section className="mainGrid events">
+        <div className="content">
+          <div className="lineAfter">
+            <h1>Our Events</h1>
+            <div className="line" />
+          </div>
+          <div className="eventGrid">
+            {events.map((event, index) => (
+              <div className="eventCard">
+                <time dateTime={event.date.dateTime}>
+                  <span className="day">{event.date.day}</span>
+                  <span className="mth">{event.date.mth}</span>
+                </time>
+                <div className="expo">
+                  <div className="tag">{event.tag}</div>
+                  <div className="title">{event.title}</div>
+                </div>
+                <div className="arrowbtn">
+                  <Arrow />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <button className="stickyDonateBtn">Donate</button>
     </>
   );
 }

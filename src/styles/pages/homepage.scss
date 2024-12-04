@@ -1,5 +1,5 @@
-@use '../constants' as constants;
-@use '../mixins' as mixins;
+@use "../constants" as constants;
+@use "../mixins" as mixins;
 ul.listWithIcons {
   list-style: none;
   li {
@@ -7,7 +7,7 @@ ul.listWithIcons {
     margin-inline-start: 2.5rem;
     position: relative;
     &::before {
-      content: '';
+      content: "";
       background-image: var(--iconUrl);
       background-size: contain;
       height: 2rem;
@@ -142,6 +142,100 @@ section.donationChart {
         line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+      }
+    }
+  }
+}
+
+.events {
+  h1 {
+    @include mixins.ScalingFont(40, 24, 1440);
+    margin-block-end: 2rem;
+  }
+  .eventGrid {
+    display: grid;
+    gap: 1rem;
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.eventCard {
+  display: grid;
+  grid-template-columns: 4rem 1fr 4rem;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #beedf3;
+  border-radius: calc(12rem / 16);
+  time {
+    display: grid;
+    grid-auto-rows: max-content;
+    .day {
+      font-weight: 500;
+      @include mixins.ScalingFont(32, 24, 1440);
+    }
+    .mth {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+  }
+  .tag {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    width: max-content;
+    position: relative;
+    margin-block-end: 0.5rem;
+    &::after {
+      $lineWidth: 2rem;
+      position: absolute;
+      content: "";
+      right: calc($lineWidth * (-1)) - 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $lineWidth;
+      height: 2px;
+      border-radius: 200vmax;
+      background-color: var(--colorDark);
+      display: block;
+    }
+  }
+  .title {
+    @include mixins.ScalingFont(28, 18, 1440);
+    font-weight: 700;
+  }
+  .arrowbtn {
+    background-color: #fff;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    align-self: center;
+    display: grid;
+    place-content: center;
+  }
+}
+
+.mapContainer {
+  h1 {
+    @include mixins.ScalingFont(64, 28, 1440);
+    font-weight: 700;
+    text-align: center;
+    margin-block-end: var(--sectionGap);
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    stroke-width: 0;
+    stroke: #5a5a5a;
+    fill: #5a5a5a;
+    // &:has(path:hover) {
+    &:hover {
+      path[id="NP"] {
+        fill: #39d3dd;
+      }
+      path[id="US"] {
+        fill: #85a8e2;
       }
     }
   }
