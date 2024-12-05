@@ -1,4 +1,4 @@
-@use "./constants" as constants;
+@use './constants' as constants;
 @import url(_fonts.scss);
 
 :root {
@@ -8,9 +8,11 @@
   --colorDark: #1d2130;
   --colorDarker: #0b0706;
   --colorPrimary: #32b4ec;
+  --colorPrimaryLight: #e5f8fa;
   --colorSectionDark: #1f3136;
   --sectionGap: 8rem;
   color: var(--colorDark);
+  line-height: 1.6;
   @media (max-width: 1000px) {
     --sectionGap: 4rem;
   }
@@ -73,6 +75,20 @@ main > section {
 main > section:first-of-type {
   margin-block-start: 0;
 }
+main > section.sectionGap {
+  margin-block: var(--sectionGap);
+}
+main > section.noGap {
+  margin-block: unset;
+}
+main > section.invertedGap {
+  margin-block: unset;
+  padding-block: var(--sectionGap);
+}
+main > section.invertedHalfGap {
+  margin-block: unset;
+  padding-block: calc(var(--sectionGap) / 2);
+}
 // main > section:last-of-type {
 //   margin-block-end: 0;
 // }
@@ -86,7 +102,7 @@ a:any-link {
     text-decoration: none;
     color: #525560;
   }
-  &[data-status="active"] {
+  &[data-status='active'] {
     font-weight: 600;
     color: var(--colorDarker);
   }
@@ -186,7 +202,7 @@ main {
       z-index: 200;
       transform: translateX(200%);
       transition: transform 300ms;
-      &[data-open="true"] {
+      &[data-open='true'] {
         transform: translateX(0%);
       }
       nav {
@@ -212,7 +228,7 @@ main {
   transition: background-color 300ms;
   &::after,
   &::before {
-    content: "";
+    content: '';
     background-color: var(--colorDarker);
     position: absolute;
     height: 2px;
@@ -226,7 +242,7 @@ main {
   &::before {
     bottom: -0.5rem;
   }
-  &[data-open="true"] {
+  &[data-open='true'] {
     background-color: transparent;
     &::after {
       transform: rotate(-45deg) translate(-0.35rem, 0.35rem);
@@ -283,7 +299,7 @@ footer {
     &:not(:hover) {
       color: #c9c9c8;
     }
-    &[data-status="active"] {
+    &[data-status='active'] {
       color: #fff;
       font-weight: 400;
     }
@@ -366,7 +382,7 @@ footer {
     font-weight: 600;
     text-transform: uppercase;
     &::before {
-      content: "";
+      content: '';
       height: 2px;
       position: absolute;
       left: 0;

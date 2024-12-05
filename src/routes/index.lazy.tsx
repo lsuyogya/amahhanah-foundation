@@ -1,97 +1,89 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import bannerUrl from "../assets/images/Banner.png";
-import mobileBannerUrl from "../assets/images/BannerCropped.png";
-import npUrl from "../assets/images/NP.svg";
-import { CSSProperties } from "react";
-import bannerStyles from "../styles/modules/banner.module.scss";
-import splideStyles from "../styles/modules/splide.module.scss";
-import vidUrl from "../assets/videos/randomVid.mp4";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-// @ts-expect-error
-import "@splidejs/react-splide/css";
-import "../styles/pages/homepage.scss";
-import logoUrl1 from "../assets/images/RandomLogo1.png";
-import logoUrl2 from "../assets/images/RandomLogo2.png";
-import logoUrl3 from "../assets/images/RandomLogo3.png";
-import logoUrl4 from "../assets/images/RandomLogo4.png";
-import card from "../assets/images/card.png";
-import card2 from "../assets/images/card2.png";
-import card3 from "../assets/images/card3.png";
-import CardContentWithin from "../components/CardContentWithin";
-import whatWeDoUrl from "../assets/images/whatWeDo.png";
-import whatWeDoIconURL from "../assets/images/whatWeDo.svg";
-import whatWeDoIconURL1 from "../assets/images/whatWeDo1.svg";
-import whatWeDoIconURL2 from "../assets/images/whatWeDo2.svg";
-import whatWeDoIconURL3 from "../assets/images/whatWeDo3.svg";
-import PieChart from "../components/PieChart";
-import contributeBannerUrl from "../assets/images/contributeBanner.png";
-import newsImgUrl from "../assets/images/news.png";
-import newsImgUrl2 from "../assets/images/news2.png";
-import newsImgUrl3 from "../assets/images/news3.png";
-import newsImgUrl4 from "../assets/images/news4.png";
-import Arrow from "../assets/images/Arrow.svg?react";
-import WorldMap from "../assets/images/world.svg?react";
-import Heart from "../assets/images/heart.svg?react";
+import { createLazyFileRoute } from '@tanstack/react-router';
+import bannerUrl from '../assets/images/Banner.png';
+import mobileBannerUrl from '../assets/images/BannerCropped.png';
+import npUrl from '../assets/images/NP.svg';
+import React, { CSSProperties } from 'react';
+import bannerStyles from '../styles/modules/banner.module.scss';
+import vidUrl from '../assets/videos/randomVid.mp4';
+import '../styles/pages/homepage.scss';
 
-export const Route = createLazyFileRoute("/")({
+import card from '../assets/images/card.png';
+import card2 from '../assets/images/card2.png';
+import card3 from '../assets/images/card3.png';
+import CardContentWithin from '../components/CardContentWithin';
+import whatWeDoUrl from '../assets/images/whatWeDo.png';
+import whatWeDoIconURL from '../assets/images/whatWeDo.svg';
+import whatWeDoIconURL1 from '../assets/images/whatWeDo1.svg';
+import whatWeDoIconURL2 from '../assets/images/whatWeDo2.svg';
+import whatWeDoIconURL3 from '../assets/images/whatWeDo3.svg';
+import PieChart from '../components/PieChart';
+import contributeBannerUrl from '../assets/images/contributeBanner.png';
+import newsImgUrl from '../assets/images/news.png';
+import newsImgUrl2 from '../assets/images/news2.png';
+import newsImgUrl3 from '../assets/images/news3.png';
+import newsImgUrl4 from '../assets/images/news4.png';
+import Arrow from '../assets/images/Arrow.svg?react';
+import Heart from '../assets/images/heart.svg?react';
+import SupporterSlide from '../components/SupporterSlide';
+
+const WorldMap = React.lazy(() => import('../assets/images/world.svg?react'));
+export const Route = createLazyFileRoute('/')({
   component: Index,
 });
 
 function Index() {
-  const logoUrlArray = [logoUrl1, logoUrl2, logoUrl3, logoUrl4];
   const cardWithinArray = [
     {
       imgUrl: card,
-      title: "Lorem ipsum dolor sit amet.",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      btnUrl: "/",
+      title: 'Lorem ipsum dolor sit amet.',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+      btnUrl: '/',
     },
     {
       imgUrl: card2,
-      title: "Lorem ipsum dolor sit amet.",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      btnUrl: "/",
+      title: 'Lorem ipsum dolor sit amet.',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+      btnUrl: '/',
     },
     {
       imgUrl: card3,
-      title: "Lorem ipsum dolor sit amet.",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      btnUrl: "/",
+      title: 'Lorem ipsum dolor sit amet.',
+      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+      btnUrl: '/',
     },
   ];
   const whatWeDoList = [
     {
       iconPath: whatWeDoIconURL,
-      title: "Build Healthy Cities",
+      title: 'Build Healthy Cities',
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
     },
     {
       iconPath: whatWeDoIconURL1,
-      title: "Tree Plantation",
+      title: 'Tree Plantation',
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
     },
     {
       iconPath: whatWeDoIconURL2,
-      title: "Protect Land and Water",
+      title: 'Protect Land and Water',
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
     },
     {
       iconPath: whatWeDoIconURL3,
-      title: "Animal Safety",
+      title: 'Animal Safety',
       content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
     },
   ];
   const donationData = [
-    { data: 40, color: "#bef3c0", label: "planting trees" },
-    { data: 35, color: "#ac94f1", label: "cleanliness program" },
-    { data: 10, color: "#fff0ca", label: "helping people" },
-    { data: 10, color: "#f9cf64", label: "animal safety" },
-    { data: 5, color: "#f38fbf", label: "feeding the poor" },
+    { data: 40, color: '#bef3c0', label: 'planting trees' },
+    { data: 35, color: '#ac94f1', label: 'cleanliness program' },
+    { data: 10, color: '#fff0ca', label: 'helping people' },
+    { data: 10, color: '#f9cf64', label: 'animal safety' },
+    { data: 5, color: '#f38fbf', label: 'feeding the poor' },
   ];
   const donationDataTotal = donationData.reduce(
     (acc, item) => acc + item.data,
@@ -99,40 +91,40 @@ function Index() {
   );
   const newsCards = [
     {
-      title: "Don’t destroy greenery and don’t spoil scenery",
+      title: 'Don’t destroy greenery and don’t spoil scenery',
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
       imgUrl: newsImgUrl,
     },
     {
-      title: " Is climate change happening faster than expected?",
+      title: ' Is climate change happening faster than expected?',
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
       imgUrl: newsImgUrl2,
     },
     {
       title: `Top 10 facts about wind farms you didn't know`,
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
       imgUrl: newsImgUrl3,
     },
     {
       title: `Our goal is to make water available for everyone`,
       excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim",
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
       imgUrl: newsImgUrl4,
     },
   ];
   const events = [
     {
-      date: { day: 23, mth: "sep", dateTime: "2024-09-23" },
-      tag: "Next Events",
-      title: "Say no to plastic usage and save the planet",
+      date: { day: 23, mth: 'sep', dateTime: '2024-09-23' },
+      tag: 'Next Events',
+      title: 'Say no to plastic usage and save the planet',
     },
     {
-      date: { day: 25, mth: "sep", dateTime: "2024-09-23" },
-      tag: "Next Events",
-      title: "Weekly cleaning program",
+      date: { day: 25, mth: 'sep', dateTime: '2024-09-23' },
+      tag: 'Next Events',
+      title: 'Weekly cleaning program',
     },
   ];
   return (
@@ -149,12 +141,11 @@ function Index() {
               className={`imgWrapper ${bannerStyles.mask}`}
               style={
                 {
-                  "--maskSrc": `url(${npUrl})`,
-                  "--imgSrc": `url(${bannerUrl})`,
-                  "--mobileImgSrc": `url(${mobileBannerUrl})`,
+                  '--maskSrc': `url(${npUrl})`,
+                  '--imgSrc': `url(${bannerUrl})`,
+                  '--mobileImgSrc': `url(${mobileBannerUrl})`,
                 } as CSSProperties
-              }
-            >
+              }>
               {/* <img src={bannerUrl} alt="" /> */}
             </div>
           </div>
@@ -193,7 +184,9 @@ function Index() {
             </div>
           </div>
           <div className="imgWrapperAbsolute">
-            <video src={vidUrl} controls></video>
+            <video
+              src={vidUrl}
+              controls></video>
           </div>
         </div>
       </section>
@@ -204,32 +197,7 @@ function Index() {
             <span>Our Supporters</span>
             <div className="line"></div>
           </div>
-          <Splide
-            aria-label="Supporter Logos"
-            options={{
-              type: "loop",
-              // autoWidth: true,
-              perPage: 4,
-              arrows: false,
-              gap: "2rem",
-              autoScroll: {
-                speed: 1,
-              },
-            }}
-            extensions={{ AutoScroll }}
-          >
-            {logoUrlArray.map((str, index) => (
-              <SplideSlide key={str + index}>
-                <div className={splideStyles.logoWrapper}>
-                  <img
-                    src={str}
-                    alt={`Image ${index}`}
-                    className={splideStyles.logoImg}
-                  />
-                </div>
-              </SplideSlide>
-            ))}
-          </Splide>
+          <SupporterSlide />
         </div>
       </section>
       <section className="mainGrid whatWeDo">
@@ -249,10 +217,9 @@ function Index() {
                   key={whatWeDo.title + index}
                   style={
                     {
-                      "--iconUrl": `url('${whatWeDo.iconPath}')`,
+                      '--iconUrl': `url('${whatWeDo.iconPath}')`,
                     } as CSSProperties
-                  }
-                >
+                  }>
                   <div className="title">{whatWeDo.title}</div>
                   <p>{whatWeDo.content}</p>
                 </li>
@@ -312,10 +279,9 @@ function Index() {
                         className="colorBox"
                         style={
                           {
-                            "--bgCol": data.color,
+                            '--bgCol': data.color,
                           } as CSSProperties
-                        }
-                      ></span>
+                        }></span>
 
                       <span className="txtLight">
                         {(data.data / donationDataTotal) * 100}% {data.label}
@@ -331,8 +297,7 @@ function Index() {
               svgClassName="donationSvg"
               chartData={donationData}
               delayStep={0.29}
-              duration={0.3}
-            ></PieChart>
+              duration={0.3}></PieChart>
           </div>
         </div>
       </section>
@@ -384,7 +349,9 @@ function Index() {
           </div>
           <div className="eventGrid">
             {events.map((event, index) => (
-              <div className="eventCard">
+              <div
+                className="eventCard"
+                key={event.date.day + event.date.mth + index}>
                 <time dateTime={event.date.dateTime}>
                   <span className="day">{event.date.day}</span>
                   <span className="mth">{event.date.mth}</span>

@@ -1,5 +1,5 @@
-@use "../constants" as constants;
-@use "../mixins" as mixins;
+@use '../constants' as constants;
+@use '../mixins' as mixins;
 ul.listWithIcons {
   list-style: none;
   li {
@@ -7,7 +7,7 @@ ul.listWithIcons {
     margin-inline-start: 2.5rem;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       background-image: var(--iconUrl);
       background-size: contain;
       height: 2rem;
@@ -150,9 +150,9 @@ section.donationChart {
 .events {
   h1 {
     @include mixins.ScalingFont(40, 24, 1440);
-    margin-block-end: 2rem;
   }
   .eventGrid {
+    margin-block-start: 2rem;
     display: grid;
     gap: 1rem;
     @media (min-width: 1000px) {
@@ -191,7 +191,7 @@ section.donationChart {
     &::after {
       $lineWidth: 2rem;
       position: absolute;
-      content: "";
+      content: '';
       right: calc($lineWidth * (-1)) - 0.5rem;
       top: 50%;
       transform: translateY(-50%);
@@ -234,10 +234,10 @@ section.donationChart {
       transition: fill 300ms;
     }
     &:hover {
-      path[id="NP"] {
+      path[id='NP'] {
         fill: #39d3dd;
       }
-      path[id="US"] {
+      path[id='US'] {
         fill: #85a8e2;
       }
     }

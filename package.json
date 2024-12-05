@@ -11,6 +11,7 @@
     "postinstall": "patch-package --exclude nothing"
   },
   "dependencies": {
+    "@fvilers/disable-react-devtools": "^1.3.0",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@tanstack/react-router": "^1.82.1",

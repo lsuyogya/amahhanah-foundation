@@ -1,0 +1,49 @@
+@use '../constants' as constants;
+@use '../mixins' as mixins;
+
+.desktop-grid-col-2 {
+  display: grid;
+  gap: 1rem;
+  @media (min-width: calc(1000rem / 16)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fullWidthVid {
+  width: 100%;
+  object-fit: cover;
+  @media (min-width: calc(1000rem / 16)) {
+    aspect-ratio: 1280 / 440;
+  }
+}
+
+section:has(+ .aboutSection) {
+  position: relative;
+  &::before {
+    content: '';
+    inset-inline: 0;
+    inset-block-end: 0;
+    inset-block-start: 55%;
+    background-color: var(--colorPrimaryLight, #e5f8fa);
+    position: absolute;
+    z-index: -1;
+    transform: translateY(calc(var(--sectionGap) / 2));
+  }
+}
+
+.aboutSection {
+  background-color: var(--colorPrimaryLight, #e5f8fa);
+  > div {
+    padding-block-end: calc(var(--sectionGap, 2rem) / 2);
+    > * {
+      margin-block-end: 2rem;
+    }
+  }
+  .desktop-grid-col-2 {
+    gap: 2rem;
+    @media (min-width: calc(1000rem / 16)) {
+      padding-inline: 4rem;
+      gap: 4rem;
+    }
+  }
+}
