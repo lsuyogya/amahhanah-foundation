@@ -1,5 +1,5 @@
-@use '../constants' as constants;
-@use '../mixins' as mixins;
+@use "../constants" as constants;
+@use "../mixins" as mixins;
 
 .desktop-grid-col-2 {
   display: grid;
@@ -20,7 +20,7 @@
 section:has(+ .aboutSection) {
   position: relative;
   &::before {
-    content: '';
+    content: "";
     inset-inline: 0;
     inset-block-end: 0;
     inset-block-start: 55%;
@@ -45,5 +45,11 @@ section:has(+ .aboutSection) {
       padding-inline: 4rem;
       gap: 4rem;
     }
+  }
+}
+
+.awards {
+  h1 {
+    text-align: center;
   }
 }

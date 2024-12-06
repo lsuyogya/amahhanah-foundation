@@ -1,18 +1,51 @@
-import { createLazyFileRoute } from '@tanstack/react-router';
-import videoUrl from '../assets/videos/randomVid.mp4';
-import '../styles/pages/about.scss';
-import SupporterSlide from '../components/SupporterSlide';
-
-export const Route = createLazyFileRoute('/about')({
+import { createLazyFileRoute } from "@tanstack/react-router";
+import videoUrl from "../assets/videos/randomVid.mp4";
+import "../styles/pages/about.scss";
+import SupporterSlide from "../components/SupporterSlide";
+import leftWing from "../assets/images/WheatLeft.svg";
+import rightWing from "../assets/images/WheatRight.svg";
+import award1 from "../assets/images/award1.png";
+import award2 from "../assets/images/award2.png";
+import award3 from "../assets/images/award3.png";
+import award4 from "../assets/images/award4.png";
+import { CSSProperties } from "react";
+export const Route = createLazyFileRoute("/about")({
   component: About,
 });
 
 function About() {
+  const awardList = [
+    {
+      imgUrl: award1,
+      year: 2021,
+      title: "Best NGO Award",
+      location: "Berlin, Germany",
+    },
+    {
+      imgUrl: award2,
+      year: 2018,
+      title: "Global Award",
+      location: "New York, USA",
+    },
+    {
+      imgUrl: award3,
+      year: 2014,
+      title: "Foresto Award",
+      location: "New Delhi, India",
+    },
+    {
+      imgUrl: award4,
+      year: 2010,
+      title: "Earth Saver Award",
+      location: "Vienna, Austria",
+    },
+  ];
   return (
     <>
       <section
         className="mainGrid"
-        style={{ marginBlock: 'calc(var(--sectionGap) / 2)' }}>
+        style={{ marginBlock: "calc(var(--sectionGap) / 2)" }}
+      >
         <div className="content">
           <div className="txtWrapper">
             <small className="dashTitle">Know about us</small>
@@ -38,10 +71,7 @@ function About() {
               </div>
             </div>
           </div>
-          <video
-            src={videoUrl}
-            className="fullWidthVid"
-            controls></video>
+          <video src={videoUrl} className="fullWidthVid" controls></video>
         </div>
       </section>
       <section className="mainGrid noGap aboutSection">
@@ -70,13 +100,35 @@ function About() {
               </p>
             </div>
           </div>
-          <span style={{ textTransform: 'uppercase' }}>Our Supporters</span>
+          <span style={{ textTransform: "uppercase" }}>Our Supporters</span>
           <SupporterSlide />
         </div>
       </section>
-      <section className="mainGrid">
+      <section className="mainGrid awards">
         <div className="content">
-          <h1>Awards & Recognition</h1>
+          <h1 className="h1">Awards & Recognition</h1>
+          <div className="awardGrid">
+            {awardList.map((award) => (
+              <div className="awardCard">
+                <div
+                  className="imgHolder"
+                  style={
+                    {
+                      "--beforeWing": leftWing,
+                      "--afterWing": rightWing,
+                    } as CSSProperties
+                  }
+                >
+                  <img src={award.imgUrl} height={42} width={42} />
+                </div>
+                <div className="txtWrapper">
+                  <div className="year">{award.year}</div>
+                  <h2 className="title">{award.title}</h2>
+                  <small className="location">{award.location}</small>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>
