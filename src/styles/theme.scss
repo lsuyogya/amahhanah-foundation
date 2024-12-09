@@ -1,11 +1,12 @@
-@use "./constants" as constants;
-@use "./mixins" as mixins;
+@use './constants' as constants;
+@use './mixins' as mixins;
 @import url(_fonts.scss);
 
 :root {
   font-family: Roboto;
   --colorLight: #fff;
   --colorLightGrey: #8c9597;
+  --colorGrey: #525560;
   --colorDark: #1d2130;
   --colorDarker: #0b0706;
   --colorPrimary: #32b4ec;
@@ -129,7 +130,7 @@ a:any-link {
     text-decoration: none;
     color: #525560;
   }
-  &[data-status="active"] {
+  &[data-status='active'] {
     font-weight: 600;
     color: var(--colorDarker);
   }
@@ -229,7 +230,7 @@ main {
       z-index: 200;
       transform: translateX(200%);
       transition: transform 300ms;
-      &[data-open="true"] {
+      &[data-open='true'] {
         transform: translateX(0%);
       }
       nav {
@@ -255,7 +256,7 @@ main {
   transition: background-color 300ms;
   &::after,
   &::before {
-    content: "";
+    content: '';
     background-color: var(--colorDarker);
     position: absolute;
     height: 2px;
@@ -269,7 +270,7 @@ main {
   &::before {
     bottom: -0.5rem;
   }
-  &[data-open="true"] {
+  &[data-open='true'] {
     background-color: transparent;
     &::after {
       transform: rotate(-45deg) translate(-0.35rem, 0.35rem);
@@ -326,7 +327,7 @@ footer {
     &:not(:hover) {
       color: #c9c9c8;
     }
-    &[data-status="active"] {
+    &[data-status='active'] {
       color: #fff;
       font-weight: 400;
     }
@@ -409,7 +410,7 @@ footer {
     font-weight: 600;
     text-transform: uppercase;
     &::before {
-      content: "";
+      content: '';
       height: 2px;
       position: absolute;
       left: 0;

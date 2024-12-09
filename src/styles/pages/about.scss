@@ -1,5 +1,5 @@
-@use "../constants" as constants;
-@use "../mixins" as mixins;
+@use '../constants' as constants;
+@use '../mixins' as mixins;
 
 .desktop-grid-col-2 {
   display: grid;
@@ -20,7 +20,7 @@
 section:has(+ .aboutSection) {
   position: relative;
   &::before {
-    content: "";
+    content: '';
     inset-inline: 0;
     inset-block-end: 0;
     inset-block-start: 55%;
@@ -73,7 +73,7 @@ section:has(+ .aboutSection) {
       width: max-content;
       &::before,
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         width: 1.25rem;
@@ -145,11 +145,17 @@ section:has(+ .aboutSection) {
   .txtWrapper {
     align-content: center;
   }
-  .imgWrapper img {
-    --_borderRadius: calc(12rem / 16);
-    border-radius: 0;
-    border-top-left-radius: var(--_borderRadius);
-    border-bottom-left-radius: var(--_borderRadius);
-    display: block;
+  .imgWrapper {
+    img {
+      display: block;
+      max-width: 100%;
+      --_borderRadius: calc(12rem / 16);
+      border-radius: 0;
+      border-top-left-radius: var(--_borderRadius);
+      border-bottom-left-radius: var(--_borderRadius);
+      @media (max-width: constants.$breakpoint) {
+        border-radius: var(--_borderRadius);
+      }
+    }
   }
 }

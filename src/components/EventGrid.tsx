@@ -1,20 +1,23 @@
-import Arrow from "../assets/images/Arrow.svg?react";
-import style from "../styles/modules/components/eventGrid.module.scss";
+import { Link } from '@tanstack/react-router';
+import Arrow from '../assets/images/Arrow.svg?react';
+import style from '../styles/modules/components/eventGrid.module.scss';
 const EventGrid = ({
-  wrapperClass = "mainGrid",
+  wrapperClass = 'mainGrid',
 }: {
   wrapperClass?: string;
 }) => {
   const events = [
     {
-      date: { day: 23, mth: "sep", dateTime: "2024-09-23" },
-      tag: "Next Events",
-      title: "Say no to plastic usage and save the planet",
+      date: { day: 23, mth: 'sep', dateTime: '2024-09-23' },
+      tag: 'Next Events',
+      title: 'Say no to plastic usage and save the planet',
+      id: '1',
     },
     {
-      date: { day: 25, mth: "sep", dateTime: "2024-09-23" },
-      tag: "Next Events",
-      title: "Weekly cleaning program",
+      date: { day: 25, mth: 'sep', dateTime: '2024-09-23' },
+      tag: 'Next Events',
+      title: 'Weekly cleaning program',
+      id: '2',
     },
   ];
   return (
@@ -28,8 +31,7 @@ const EventGrid = ({
           {events.map((event, index) => (
             <div
               className={style.eventCard}
-              key={event.date.day + event.date.mth + index}
-            >
+              key={event.date.day + event.date.mth + index}>
               <time dateTime={event.date.dateTime}>
                 <span className={style.day}>{event.date.day}</span>
                 <span className={style.mth}>{event.date.mth}</span>
@@ -39,7 +41,12 @@ const EventGrid = ({
                 <div className={style.title}>{event.title}</div>
               </div>
               <div className={style.arrowbtn}>
-                <Arrow />
+                <Link
+                  to="/events/$eventId"
+                  params={{ eventId: event.id }}
+                  style={{ display: 'contents' }}>
+                  <Arrow />
+                </Link>
               </div>
             </div>
           ))}
