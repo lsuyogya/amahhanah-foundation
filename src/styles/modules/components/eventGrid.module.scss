@@ -1,0 +1,74 @@
+@use "../../mixins" as mixins;
+@use "../../constants" as constants;
+.events {
+  h1 {
+    @include mixins.ScalingFont(40, 24, 1440);
+  }
+  $_localBreakpoint: calc(600rem / 16);
+  .eventGrid {
+    margin-block-start: 2rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax($_localBreakpoint, 1fr));
+    @media (max-width: #{$_localBreakpoint}) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .eventCard {
+    display: grid;
+    padding: 2rem;
+    gap: 2rem;
+    background-color: #beedf3;
+    border-radius: calc(12rem / 16);
+    @media (min-width: #{$_localBreakpoint}) {
+      grid-template-columns: 4rem 1fr 4rem;
+    }
+    time {
+      display: grid;
+      grid-auto-rows: max-content;
+      .day {
+        font-weight: 500;
+        @include mixins.ScalingFont(32, 24, 1440);
+      }
+      .mth {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 500;
+      }
+    }
+    .tag {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      width: max-content;
+      position: relative;
+      margin-block-end: 0.5rem;
+      &::after {
+        $lineWidth: 2rem;
+        position: absolute;
+        content: "";
+        right: calc($lineWidth * (-1)) - 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: $lineWidth;
+        height: 2px;
+        border-radius: 200vmax;
+        background-color: var(--colorDark);
+        display: block;
+      }
+    }
+    .title {
+      @include mixins.ScalingFont(28, 18, 1440);
+      font-weight: 700;
+    }
+    .arrowbtn {
+      background-color: #fff;
+      border-radius: 50%;
+      aspect-ratio: 1;
+      align-self: center;
+      display: grid;
+      place-content: center;
+      max-width: calc(64rem / 16);
+    }
+  }
+}

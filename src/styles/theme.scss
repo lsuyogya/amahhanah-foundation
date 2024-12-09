@@ -50,6 +50,32 @@
     [fullWidth-end];
   display: grid;
 }
+.mainGridSmall {
+  --padding-inline: #{constants.$paddingInline};
+  --content-max-width: calc(768rem / 16);
+  --breakout-max-width: calc(1500rem / 16);
+  --breakout-min-width: 0rem;
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
+  --content-size: min(
+    100% - var(--padding-inline) * 2,
+    var(--content-max-width)
+  );
+  --fullWidth-size: minmax(var(--padding-inline), 1fr);
+  grid-template-columns:
+    [fullWidth-start] var(--fullWidth-size) [breakout-start] minmax(
+      var(--breakout-min-width),
+      var(--breakout-size)
+    )
+    [content-start] calc(var(--content-size)) [content-end] minmax(
+      var(--breakout-min-width),
+      var(--breakout-size)
+    )
+    [breakout-end] var(--fullWidth-size)
+    [fullWidth-end];
+  display: grid;
+}
 .breakout {
   grid-column: breakout;
 }
@@ -459,6 +485,9 @@ footer {
   background-color: var(--colorSectionDark);
   padding-block: calc(var(--sectionGap) / 2);
 }
+.bgPrimaryLight {
+  background-color: var(--colorPrimaryLight);
+}
 
 .sectionTitle {
   font-size: clamp(calc(32rem / 16), 3.5vw, calc(48rem / 16));
@@ -510,4 +539,17 @@ footer {
 
 .h1 {
   @include mixins.ScalingFont(40, 24, 1440);
+}
+.h1Lg {
+  @include mixins.ScalingFont(56, 32, 1440);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.letterSpread {
+  letter-spacing: 2px;
+}
+.firstSectionGap {
+  margin-block: calc(var(--sectionGap) / 2);
 }

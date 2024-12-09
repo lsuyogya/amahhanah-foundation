@@ -8,7 +8,9 @@ import award1 from "../assets/images/award1.png";
 import award2 from "../assets/images/award2.png";
 import award3 from "../assets/images/award3.png";
 import award4 from "../assets/images/award4.png";
+import journeyImgUrl from "../assets/images/JourneyImg.png";
 import { CSSProperties } from "react";
+import EventGrid from "../components/EventGrid";
 export const Route = createLazyFileRoute("/about")({
   component: About,
 });
@@ -114,8 +116,8 @@ function About() {
                   className="imgHolder"
                   style={
                     {
-                      "--beforeWing": leftWing,
-                      "--afterWing": rightWing,
+                      "--beforeWing": `url(${leftWing})`,
+                      "--afterWing": `url(${rightWing})`,
                     } as CSSProperties
                   }
                 >
@@ -131,6 +133,38 @@ function About() {
           </div>
         </div>
       </section>
+      <section className="mainGrid ourJourney">
+        <div className="content bgDark">
+          <div className="txtWrapper">
+            <span className="uppercase letterSpread">Our Journey</span>
+            <h1>How we raised 34M</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse varius enim in eros elementum tristique. Duis cursus,
+              mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam
+              libero vitae erat. Aenean faucibus nibh.
+            </p>
+            <div className="highlights">
+              <div className="highlight">
+                <strong>34M+</strong>
+                <small>Donation Received</small>
+              </div>
+              <div className="highlight">
+                <strong>400+</strong>
+                <small>Volunters</small>
+              </div>
+              <div className="highlight">
+                <strong>40K+</strong>
+                <small>Trees planted</small>
+              </div>
+            </div>
+          </div>
+          <div className="imgWrapper">
+            <img src={journeyImgUrl} alt="" />
+          </div>
+        </div>
+      </section>
+      <EventGrid />
     </>
   );
 }

@@ -1,0 +1,24 @@
+.banner {
+  h1 {
+    line-height: 1.2;
+    margin-block-end: 2rem;
+  }
+  .eventDetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    .location,
+    .date {
+      display: flex;
+      gap: 0.5rem;
+    }
+    svg {
+      display: block;
+    }
+  }
+}
+.contentWrapper > * {
+  display: grid;
+  margin-block: 1rem;
+}
