@@ -3,6 +3,7 @@ import blogImgUrl from '../../assets/images/blogImg.png';
 import style from '../../styles/modules/blogDetail.module.scss';
 import parse from 'html-react-parser';
 import DOMPurify from 'dompurify';
+import StickyDonateBtn from '../../components/StickyDonateBtn';
 
 export const Route = createFileRoute('/blogs/$blogId')({
   component: RouteComponent,
@@ -57,6 +58,7 @@ function RouteComponent() {
       <section className={`mainGrid ${style.blogContent}`}>
         <div className="content">{parse(sanitizedContent)}</div>
       </section>
+      <StickyDonateBtn />
     </>
   );
 }

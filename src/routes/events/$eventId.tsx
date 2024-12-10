@@ -1,21 +1,22 @@
 // import * as React from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import LocationIcon from "../../assets/images/locationIcon.svg?react";
-import CalenderIcon from "../../assets/images/CalenderIcon.svg?react";
-import style from "../../styles/modules/eventDetail.module.scss";
-import EventGrid from "../../components/EventGrid";
-import DOMPurify from "dompurify";
-import parse from "html-react-parser";
+import { createFileRoute } from '@tanstack/react-router';
+import LocationIcon from '../../assets/images/locationIcon.svg?react';
+import CalenderIcon from '../../assets/images/CalenderIcon.svg?react';
+import style from '../../styles/modules/eventDetail.module.scss';
+import EventGrid from '../../components/EventGrid';
+import DOMPurify from 'dompurify';
+import parse from 'html-react-parser';
+import StickyDonateBtn from '../../components/StickyDonateBtn';
 
-export const Route = createFileRoute("/events/$eventId")({
+export const Route = createFileRoute('/events/$eventId')({
   component: RouteComponent,
 });
 const event = {
   eventId: 1,
-  eventTitle: "This Page Describes The Event",
-  location: "8 Brewery Drive, Hudson, NH 03051, USA",
-  date: "September 3, 2021 8:30 AM",
-  dateTime: "2021-09-03T08:30",
+  eventTitle: 'This Page Describes The Event',
+  location: '8 Brewery Drive, Hudson, NH 03051, USA',
+  date: 'September 3, 2021 8:30 AM',
+  dateTime: '2021-09-03T08:30',
   eventDescription: `<p>Et morbi vitae lobortis nam odio. Faucibus vitae vel neque nullam in in lorem platea mattis. Euismod aenean rhoncus scelerisque amet tincidunt scelerisque aliquam. Luctus porttitor elit vel sapien, accumsan et id ut est. Posuere molestie in turpis quam. Scelerisque in viverra mi ut quisque. In sollicitudin sapien, vel nulla quisque vitae. Scelerisque eget accumsan, non in. Posuere magna erat bibendum amet, nisi eu id.
 </p><p>
 Viverra at diam nunc non ornare. Sed ultricies pulvinar nunc, lacus sem. Tellus aliquam ut euismod cursus dui lectus. Ut amet, cras volutpat dui. A bibendum viverra eu cras.
@@ -36,13 +37,13 @@ function RouteComponent() {
               <div className={style.location}>
                 <span>
                   <LocationIcon />
-                </span>{" "}
+                </span>{' '}
                 <span> {event.location}</span>
               </div>
               <div className={style.date}>
                 <span>
                   <CalenderIcon />
-                </span>{" "}
+                </span>{' '}
                 <time dateTime={event.dateTime}> {event.date}</time>
               </div>
             </div>
@@ -56,6 +57,7 @@ function RouteComponent() {
         </div>
       </section>
       <EventGrid wrapperClass="mainGridSmall" />
+      <StickyDonateBtn />
     </>
   );
 }
