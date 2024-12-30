@@ -1,33 +1,33 @@
-import { createLazyFileRoute } from '@tanstack/react-router';
-import bannerUrl from '../assets/images/Banner.png';
-import mobileBannerUrl from '../assets/images/BannerCropped.png';
-import npUrl from '../assets/images/NP.svg';
-import React, { CSSProperties } from 'react';
-import bannerStyles from '../styles/modules/banner.module.scss';
-import vidUrl from '../assets/videos/randomVid.mp4';
-import '../styles/pages/homepage.scss';
+import { createLazyFileRoute } from "@tanstack/react-router";
+import bannerUrl from "../assets/images/Banner.png";
+import mobileBannerUrl from "../assets/images/BannerCropped.png";
+import npUrl from "../assets/images/NP.svg";
+import React, { CSSProperties } from "react";
+import bannerStyles from "../styles/modules/banner.module.scss";
+import vidUrl from "../assets/videos/randomVid.mp4";
+import "../styles/pages/homepage.scss";
 
-import card from '../assets/images/card.png';
-import card2 from '../assets/images/card2.png';
-import card3 from '../assets/images/card3.png';
-import CardContentWithin from '../components/CardContentWithin';
-import whatWeDoUrl from '../assets/images/whatWeDo.png';
-import whatWeDoIconURL from '../assets/images/whatWeDo.svg';
-import whatWeDoIconURL1 from '../assets/images/whatWeDo1.svg';
-import whatWeDoIconURL2 from '../assets/images/whatWeDo2.svg';
-import whatWeDoIconURL3 from '../assets/images/whatWeDo3.svg';
-import PieChart from '../components/PieChart';
-import contributeBannerUrl from '../assets/images/contributeBanner.png';
-import newsImgUrl from '../assets/images/news.png';
-import newsImgUrl2 from '../assets/images/news2.png';
-import newsImgUrl3 from '../assets/images/news3.png';
-import newsImgUrl4 from '../assets/images/news4.png';
-import SupporterSlide from '../components/SupporterSlide';
-import EventGrid from '../components/EventGrid';
-import StickyDonateBtn from '../components/StickyDonateBtn';
+import card from "../assets/images/card.png";
+import card2 from "../assets/images/card2.png";
+import card3 from "../assets/images/card3.png";
+import CardContentWithin from "../components/CardContentWithin";
+import whatWeDoUrl from "../assets/images/whatWeDo.png";
+import whatWeDoIconURL from "../assets/images/whatWeDo.svg";
+import whatWeDoIconURL1 from "../assets/images/whatWeDo1.svg";
+import whatWeDoIconURL2 from "../assets/images/whatWeDo2.svg";
+import whatWeDoIconURL3 from "../assets/images/whatWeDo3.svg";
+import PieChart from "../components/PieChart";
+import contributeBannerUrl from "../assets/images/contributeBanner.png";
+import newsImgUrl from "../assets/images/news.png";
+import newsImgUrl2 from "../assets/images/news2.png";
+import newsImgUrl3 from "../assets/images/news3.png";
+import newsImgUrl4 from "../assets/images/news4.png";
+import SupporterSlide from "../components/SupporterSlide";
+import EventGrid from "../components/EventGrid";
+import StickyDonateBtn from "../components/StickyDonateBtn";
 
-const WorldMap = React.lazy(() => import('../assets/images/world.svg?react'));
-export const Route = createLazyFileRoute('/')({
+const WorldMap = React.lazy(() => import("../assets/images/world.svg?react"));
+export const Route = createLazyFileRoute("/")({
   component: Index,
 });
 
@@ -35,55 +35,54 @@ function Index() {
   const cardWithinArray = [
     {
       imgUrl: card,
-      title: 'Lorem ipsum dolor sit amet.',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
-      btnUrl: '/',
+      title: "Brighter Futures Program",
+      desc: "Delivering quality education to underprivileged children through community schools and digital learning platforms.",
+      btnUrl: "/",
     },
     {
       imgUrl: card2,
-      title: 'Lorem ipsum dolor sit amet.',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
-      btnUrl: '/',
+      title: "Clean Water for All",
+      desc: "Installing water purification systems and wells to ensure safe drinking water in water-scarce areas.",
+      btnUrl: "/",
     },
     {
       imgUrl: card3,
-      title: 'Lorem ipsum dolor sit amet.',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
-      btnUrl: '/',
+      title: "Youth Leadership Development",
+      desc: "Empowering young people to become change agents in their communities through mentorship and leadership programs.",
+      btnUrl: "/",
     },
   ];
   const whatWeDoList = [
     {
       iconPath: whatWeDoIconURL,
-      title: 'Build Healthy Cities',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+      title: "Education Programs:",
+      content: "Providing access to quality education for children and adults.",
     },
     {
       iconPath: whatWeDoIconURL1,
-      title: 'Tree Plantation',
+      title: "Healthcare Initiatives:",
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+        "Ensuring healthcare services and resources reach underserved populations.",
     },
     {
       iconPath: whatWeDoIconURL2,
-      title: 'Protect Land and Water',
+      title: "Economic Empowerment:",
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+        "Offering skills training and microfinance programs to boost livelihoods.",
     },
     {
       iconPath: whatWeDoIconURL3,
-      title: 'Animal Safety',
+      title: "Disaster Relief:",
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.',
+        "Responding swiftly to natural disasters and humanitarian crises.",
     },
   ];
   const donationData = [
-    { data: 40, color: '#bef3c0', label: 'planting trees' },
-    { data: 35, color: '#ac94f1', label: 'cleanliness program' },
-    { data: 10, color: '#fff0ca', label: 'helping people' },
-    { data: 10, color: '#f9cf64', label: 'animal safety' },
-    { data: 5, color: '#f38fbf', label: 'feeding the poor' },
+    { data: 40, color: "#bef3c0", label: "planting trees" },
+    { data: 35, color: "#ac94f1", label: "cleanliness program" },
+    { data: 10, color: "#fff0ca", label: "helping people" },
+    { data: 10, color: "#f9cf64", label: "animal safety" },
+    { data: 5, color: "#f38fbf", label: "feeding the poor" },
   ];
   const donationDataTotal = donationData.reduce(
     (acc, item) => acc + item.data,
@@ -91,27 +90,27 @@ function Index() {
   );
   const newsCards = [
     {
-      title: 'Don’t destroy greenery and don’t spoil scenery',
+      title: "Don’t destroy greenery and don’t spoil scenery",
       excerpt:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
+        "Thanks to our supporters and local partners, we’ve achieved a significant milestone in our reforestation efforts.",
       imgUrl: newsImgUrl,
     },
     {
-      title: ' Is climate change happening faster than expected?',
+      title: " Is climate change happening faster than expected?",
       excerpt:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
+        "A collective voice for change as our campaign garners worldwide attention.",
       imgUrl: newsImgUrl2,
     },
     {
       title: `Top 10 facts about wind farms you didn't know`,
       excerpt:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
+        "Meet the community members whose lives were transformed by our disaster relief program.",
       imgUrl: newsImgUrl3,
     },
     {
       title: `Our goal is to make water available for everyone`,
       excerpt:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim',
+        "Discover how a water purification system changed the lives of 200 families in a drought-affected region.",
       imgUrl: newsImgUrl4,
     },
   ];
@@ -130,11 +129,12 @@ function Index() {
               className={`imgWrapper ${bannerStyles.mask}`}
               style={
                 {
-                  '--maskSrc': `url(${npUrl})`,
-                  '--imgSrc': `url(${bannerUrl})`,
-                  '--mobileImgSrc': `url(${mobileBannerUrl})`,
+                  "--maskSrc": `url(${npUrl})`,
+                  "--imgSrc": `url(${bannerUrl})`,
+                  "--mobileImgSrc": `url(${mobileBannerUrl})`,
                 } as CSSProperties
-              }>
+              }
+            >
               {/* <img src={bannerUrl} alt="" /> */}
             </div>
           </div>
@@ -159,23 +159,22 @@ function Index() {
             <small className="dashTitle">Know About Us</small>
             <h1 className="sectionTitle">We do Something that is to be done</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique.
+              Ammanah Foundation is a global nonprofit organization dedicated to
+              addressing the most pressing challenges faced by vulnerable
+              communities worldwide.
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-              debitis harum exercitationem ducimus excepturi alias quaerat fugit
-              laborum tempore temporibus molestiae, facilis, porro repellendus
-              culpa quae esse deleniti tempora officia.
+              Founded on the principles of compassion, equality, and
+              sustainability, we work tirelessly to create opportunities for
+              individuals and families to thrive.
             </p>
+
             <div>
               <button className="btnPrimary">Learn More</button>
             </div>
           </div>
           <div className="imgWrapperAbsolute">
-            <video
-              src={vidUrl}
-              controls></video>
+            <video src={vidUrl} controls></video>
           </div>
         </div>
       </section>
@@ -206,9 +205,10 @@ function Index() {
                   key={whatWeDo.title + index}
                   style={
                     {
-                      '--iconUrl': `url('${whatWeDo.iconPath}')`,
+                      "--iconUrl": `url('${whatWeDo.iconPath}')`,
                     } as CSSProperties
-                  }>
+                  }
+                >
                   <div className="title">{whatWeDo.title}</div>
                   <p>{whatWeDo.content}</p>
                 </li>
@@ -268,9 +268,10 @@ function Index() {
                         className="colorBox"
                         style={
                           {
-                            '--bgCol': data.color,
+                            "--bgCol": data.color,
                           } as CSSProperties
-                        }></span>
+                        }
+                      ></span>
 
                       <span className="txtLight">
                         {(data.data / donationDataTotal) * 100}% {data.label}
@@ -286,7 +287,8 @@ function Index() {
               svgClassName="donationSvg"
               chartData={donationData}
               delayStep={0.29}
-              duration={0.3}></PieChart>
+              duration={0.3}
+            ></PieChart>
           </div>
         </div>
       </section>

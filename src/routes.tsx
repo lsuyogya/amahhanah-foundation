@@ -17,6 +17,10 @@ export const headerLinks = [
     label: "About",
   }),
   linkOptions({
+    to: "/team",
+    label: "Our Team",
+  }),
+  linkOptions({
     to: "/media",
     label: "Media",
   }),

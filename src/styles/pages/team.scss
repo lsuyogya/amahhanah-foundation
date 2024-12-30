@@ -1,0 +1,174 @@
+@use "../constants" as constants;
+@use "../mixins" as mixins;
+
+.awards {
+  h1 {
+    text-align: center;
+  }
+  .awardGrid {
+    margin-block-start: 2rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(calc(150rem / 16), calc(250rem / 16))
+        minmax(calc(150rem / 16), calc(250rem / 16))
+    );
+    text-align: center;
+    place-content: center;
+    place-items: center;
+    .awardCard {
+      display: grid;
+      place-content: center;
+      place-items: center;
+    }
+    .imgHolder {
+      position: relative;
+      width: max-content;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1.25rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+      &::before {
+        background-image: var(--beforeWing);
+        left: -1.75rem;
+      }
+      &::after {
+        background-image: var(--afterWing);
+        right: -1.75rem;
+      }
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    .year {
+      font-weight: 700;
+      color: var(--colorDark);
+      font-family: calc(24rem / 16);
+    }
+    .title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .location {
+      color: var(--colorLightGrey);
+    }
+  }
+}
+
+.ourJourney {
+  .content {
+    padding-inline: clamp(2rem, 5vw, 4rem);
+    color: var(--colorLight);
+    display: grid;
+    gap: 2rem;
+    border-radius: calc(12rem / 16);
+    @media (min-width: constants.$breakpoint) {
+      padding-inline-end: 0;
+      grid-template-columns: 6fr 6fr;
+    }
+  }
+  h1 {
+    @include mixins.ScalingFont(48, 28, 1440);
+  }
+  p {
+    color: var(--colorLightGrey);
+  }
+  .highlights {
+    margin-block-start: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    .highlight {
+      display: grid;
+      gap: 0rem;
+      strong {
+        @include mixins.ScalingFont(24, 18, 1400);
+      }
+      small {
+        color: var(--colorLightGrey);
+      }
+    }
+  }
+  .txtWrapper {
+    align-content: center;
+  }
+  .imgWrapper {
+    img {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+      --_borderRadius: calc(12rem / 16);
+      border-radius: 0;
+      border-top-left-radius: var(--_borderRadius);
+      border-bottom-left-radius: var(--_borderRadius);
+      @media (max-width: constants.$breakpoint) {
+        border-radius: var(--_borderRadius);
+      }
+    }
+  }
+}
+
+.ourTeam {
+  .headerBlock {
+    text-align: center;
+    max-width: 80ch;
+    margin-inline: auto;
+    h1 {
+      margin-block-end: 1rem;
+    }
+    p {
+      color: var(--colorLightGrey);
+    }
+  }
+  .teamMembers {
+    margin-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(calc(300rem / 16), 1fr));
+    @media (max-width: calc(300rem / 16 + #{constants.$paddingInline} * 2)) {
+      grid-template-columns: 1fr;
+    }
+    .memberCard {
+      .imgWrapper {
+        border-radius: 12px;
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+        }
+      }
+      .txtWrapper {
+        text-align: center;
+        .name {
+          @include mixins.ScalingFont(20, 16, 1440);
+          font-weight: 600;
+        }
+        .position {
+          color: var(--colorLightGrey);
+          font-size: calc(12rem / 16);
+        }
+        .socialList {
+          color: var(--colorGrey);
+          margin-block-start: 0.5rem;
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          .a {
+            display: contents;
+          }
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}
