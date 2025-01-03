@@ -481,6 +481,14 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+.card-300-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(300rem / 16), 1fr));
+  gap: 2rem;
+  @media (max-width: calc((300rem / 16) + constants.$paddingInline)) {
+    grid-template-columns: 1fr;
+  }
+}
 
 .bgDark {
   background-color: var(--colorSectionDark);
@@ -552,6 +560,6 @@ footer {
 .letterSpread {
   letter-spacing: 2px;
 }
-.firstSectionGap {
+.firstSectionGap.firstSectionGap {
   margin-block: calc(var(--sectionGap) / 2);
 }

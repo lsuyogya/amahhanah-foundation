@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ProjectsProjectIdImport } from './routes/projects/$projectId'
 import { Route as EventsEventIdImport } from './routes/events/$eventId'
 import { Route as BlogsBlogIdImport } from './routes/blogs/$blogId'
 
@@ -62,6 +63,12 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const ProjectsProjectIdRoute = ProjectsProjectIdImport.update({
+  id: '/projects/$projectId',
+  path: '/projects/$projectId',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const EventsEventIdRoute = EventsEventIdImport.update({
   id: '/events/$eventId',
@@ -135,6 +142,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsEventIdImport
       parentRoute: typeof rootRoute
     }
+    '/projects/$projectId': {
+      id: '/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof ProjectsProjectIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -149,6 +163,7 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamLazyRoute
   '/blogs/$blogId': typeof BlogsBlogIdRoute
   '/events/$eventId': typeof EventsEventIdRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 
 export interface FileRoutesByTo {
@@ -160,6 +175,7 @@ export interface FileRoutesByTo {
   '/team': typeof TeamLazyRoute
   '/blogs/$blogId': typeof BlogsBlogIdRoute
   '/events/$eventId': typeof EventsEventIdRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 
 export interface FileRoutesById {
@@ -172,6 +188,7 @@ export interface FileRoutesById {
   '/team': typeof TeamLazyRoute
   '/blogs/$blogId': typeof BlogsBlogIdRoute
   '/events/$eventId': typeof EventsEventIdRoute
+  '/projects/$projectId': typeof ProjectsProjectIdRoute
 }
 
 export interface FileRouteTypes {
@@ -185,6 +202,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/blogs/$blogId'
     | '/events/$eventId'
+    | '/projects/$projectId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -195,6 +213,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/blogs/$blogId'
     | '/events/$eventId'
+    | '/projects/$projectId'
   id:
     | '__root__'
     | '/'
@@ -205,6 +224,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/blogs/$blogId'
     | '/events/$eventId'
+    | '/projects/$projectId'
   fileRoutesById: FileRoutesById
 }
 
@@ -217,6 +237,7 @@ export interface RootRouteChildren {
   TeamLazyRoute: typeof TeamLazyRoute
   BlogsBlogIdRoute: typeof BlogsBlogIdRoute
   EventsEventIdRoute: typeof EventsEventIdRoute
+  ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -228,6 +249,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamLazyRoute: TeamLazyRoute,
   BlogsBlogIdRoute: BlogsBlogIdRoute,
   EventsEventIdRoute: EventsEventIdRoute,
+  ProjectsProjectIdRoute: ProjectsProjectIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -247,7 +269,8 @@ export const routeTree = rootRoute
         "/media",
         "/team",
         "/blogs/$blogId",
-        "/events/$eventId"
+        "/events/$eventId",
+        "/projects/$projectId"
       ]
     },
     "/": {
@@ -273,6 +296,9 @@ export const routeTree = rootRoute
     },
     "/events/$eventId": {
       "filePath": "events/$eventId.tsx"
+    },
+    "/projects/$projectId": {
+      "filePath": "projects/$projectId.tsx"
     }
   }
 }

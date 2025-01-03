@@ -37,19 +37,19 @@ function Index() {
       imgUrl: card,
       title: "Brighter Futures Program",
       desc: "Delivering quality education to underprivileged children through community schools and digital learning platforms.",
-      btnUrl: "/",
+      btnUrl: "/projects/1",
     },
     {
       imgUrl: card2,
       title: "Clean Water for All",
       desc: "Installing water purification systems and wells to ensure safe drinking water in water-scarce areas.",
-      btnUrl: "/",
+      btnUrl: "/projects/2",
     },
     {
       imgUrl: card3,
       title: "Youth Leadership Development",
       desc: "Empowering young people to become change agents in their communities through mentorship and leadership programs.",
-      btnUrl: "/",
+      btnUrl: "/projects/3",
     },
   ];
   const whatWeDoList = [

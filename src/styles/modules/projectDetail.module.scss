@@ -1,0 +1,62 @@
+@use "../mixins" as mixins;
+@use "../constants" as constants;
+
+.projectHighlights {
+  columns: 2;
+  gap: 1rem;
+  background-color: var(--colorPrimaryLight);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  .highlight {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-block: 1rem;
+    gap: 0.5rem;
+    &:first-child {
+      margin-block-start: 0;
+    }
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}
+
+.projectContent {
+  margin-block-start: 0;
+  color: var(--colorGrey);
+  > * {
+    max-width: calc(1100rem / 16);
+    width: 100%;
+    margin-inline: auto;
+    display: grid;
+    gap: 1rem;
+  }
+  h1 {
+    @include mixins.ScalingFont(48, 28, 1440);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  h2 {
+    @include mixins.ScalingFont(28, 18, 1440);
+    line-height: 1.2;
+    font-weight: 700;
+    margin-block-start: 4rem;
+    margin-block-end: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--colorDark);
+  }
+  ul,
+  ol {
+    margin-inline-start: 2.25rem;
+  }
+  ol li {
+    padding-inline-start: 0.25rem;
+  }
+}
